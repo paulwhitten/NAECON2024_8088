@@ -217,11 +217,60 @@
 
 				<section>
 					<h4>Property-Based Explainable Architecture</h4>
-					<img src="./images/property-based-xai-arch.svg" background="white" height="350">
+
+					<div class="r-stack">
+
+						<img
+						class="fragment fade-out"
+						data-fragment-index="0"
+						src="./images/general-property-based-xai-arch.svg" background="white" height="350"/>
+
+						<img
+						class="fragment current-visible"
+						data-fragment-index="0"
+						src="./images/property-based-xai-arch.svg" background="white" height="350"/>
+
+					</div>
+
 					<aside class="notes">
 						<p></p>
 					</aside>
 				</section>
+
+				<section>
+					<section>
+						<h4>Property Explainable Example</h4>
+						
+						<p>Sample</p>
+
+						<img src="./images/example.png" height="80">
+
+						<hr>
+
+						<p>Output</p>
+
+						<img src="./images/property-example.png">
+
+						
+						<aside class="notes">
+							<p></p>
+						</aside>
+					</section>
+
+					<section>
+						<h4>Properties</h4>
+						
+						
+						<img src="./images/properties.png">
+
+						
+						<aside class="notes">
+							<p></p>
+						</aside>
+					</section>
+
+				</section>
+
 
 				<section>
 					<h4>Case-Based Explainable Architecture</h4>
@@ -231,11 +280,19 @@
 					</aside>
 				</section>
 
-
 				<section>
-					<h2>Explainable Example</h2>
+					<h4>Case Explainable Example</h4>
 					
-					TODO
+					<p>Sample</p>
+
+					<img src="./images/example.png" height="70">
+
+					<hr>
+
+					<p>Output</p>
+
+					<img src="./images/case-example.png" height="250">
+
 					
 					<aside class="notes">
 						<p></p>
@@ -246,12 +303,21 @@
 				<section>
 					<h2>Conclusion</h2>
 
-					TODO: complete
-
 					<ul class="mid">
-						<li>Case-based outperformed property-based architecture</li>
-						<li></li>
+						<li>Explainable properties difficult to elicit from low dimensional space</li>
+						<li>Marginal explainability in property-based architecture</li>
+						<li>Property-based system vs case-based distinct inference and neighbor</li>
+						<li>Case-based architecture had 94.7% correspondence with inference engine</li>
+						<li>Case-based outperformed the property-based architecture</li>
 					</ul>
+
+					<aside class="notes">
+						<p>Using only five features made it hard to extract explainable properties</p>
+						<p>Marginal explainability - low explainability metrics in property based architecture due to large number of features in property</p>
+						<p>Property base system had positives in that it behaved as a system.  Negative in case based was inference separate from cases</p>
+						<p>Case-based architecture agreed with the SVM inference engine a very high percentage of time</p>
+						<p>Cases and references gave compelling rationale for decisions.  Better than combinations of features.</p>
+					</aside>
 					
 				</section>
 
