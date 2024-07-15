@@ -79,8 +79,8 @@
 						<li>Problem</li>
 						<li>Contributions</li>
 						<li>Data Processing</li>
-						<li>Property-Based Architecture</li>
-						<li>Case-Based Architecture</li>
+						<li>Property-Based Explainable Architecture</li>
+						<li>Case-Based Explainable Architecture</li>
 						<li>Explainable Examples</li>
 						<li>Conclusion</li>
 					</ul>
@@ -101,8 +101,15 @@
 						</ul>
 					</ul>
 					<aside class="notes">
-						<p></p>
-
+						<p>HW trojans are identified as a concern for trusted systems</p>
+						<p>Avenues to inject trojans are through adoption of third party intellectual property</p>
+						<p>Processes, vendors, and third party involvement in digital design and production</p>
+						<p>Existing techniques have been posed to identify HW trojans through static analysis of gate-level netlists</p>
+						<p>Some techniques use machine learning to recognize trojans</p>
+						<p>ML cannot justify or explain decisions</p>
+						<p>Goal of this work is to introduce and compare</p>
+						<p>Explainable property based architecture</p>
+						<p>Explainable case based architecture</p>
 					</aside>
 				</section>
 
@@ -132,6 +139,7 @@
 
 					<aside class="notes">
 						<p>HW trojan used to weaken the intellectual property of a hardware design</p>
+						<p>HW trojan does this by compromising the confidentiality, integrity, availability of a system</p>
 						<p>Confidentiality HW trojan could leak sensitive information from the system</p>
 						<p>Availability HW trojan could disrupt the regular operation of HW</p>
 						<p>Integrity HW trojan could intentionally corrupt information in the system</p>
@@ -145,7 +153,7 @@
 					<img src="./images/trojan-model.svg" background="white">
 
 					<aside class="notes">
-						<p>Confidentiality HW trojan in this diagram designed to leak sensitive information on primary output</p>
+						<p>Rare Event Confidentiality HW trojan in this diagram designed to leak sensitive information on primary output</p>
 						<p>Dashed lines on left represent additional levels of logic gates</p>
 						<p>To make the trojan difficult to detect, intentionally rare input patterns trigger the trojan payload</p>
 						<p>Example for n inputs only 1 in 2^n input patterns trigger the trojan</p>
@@ -164,22 +172,28 @@
 							<li>PI - Primary input</li>
 							<li>PO - Primary output</li>
 						</ol>
+						<li>Highly imbalanced dataset</li>
 						<li>ML trained to make decisions</li>
 						<li>Trust in the decisions is lacking - <b>Need Explanations</b></li>
 					</ul>
 					<aside class="notes">
+						<p>The problem we approach in this work is the static detection of HW trojans from gate level netlists</p>
+						<p>We do so using the following five features.</p>
 						<p>LGFi - number of logic gate inputs two levels from a net</p>
 						<p>FFi - the number of levels to the nearest flip-flop input</p>
 						<p>FFo - the number of logic levels to the nearest flip-flop output</p>
 						<p>PI - The logic level from a primary input</p>
 						<p>PO - The logic level to a primary output</p>
+						<p>Highly imbalanced dataset 250:1 (normal:trojan nets)</p>
+						<p>Machine learning used to make decisions</p>
+						<p>Trust in decision making is lacking.  We need explanations to establish trust</p>
 					</aside>
 				</section>
 
 				<section>
 					<h2>Contributions</h2>
 					<ul class="mid">
-						<li>Methodology for processing netlists</li>
+						<li>Flow for processing netlists and extracting features</li>
 						<li>Property-based explainable architecture</li>
 						<li>Case-based explainable architecture</li>
 						<li>Results of explainable architecture</li>
@@ -211,7 +225,12 @@
 
 					</div>
 					<aside class="notes">
-						<p></p>
+						<p>Diagram depicts the flow of data processing from the verilog netlists</p>
+						<p>Circuitgraph is used to parse the netlists</p>
+						<p>A directed graph is constructed</p>
+						<p>five features are extracted</p>
+						<p>Processed 15 of the trust-hum netlists to gather 52,000 samples representing nets in the netlist</p>
+						<p>A random 80% used for training and 20% used to test</p>
 					</aside>
 				</section>
 
@@ -232,8 +251,18 @@
 
 					</div>
 
+					<p class="mid">Property = grouping of features</p>
+
 					<aside class="notes">
-						<p></p>
+						<p>Depicts a general property based explainable architecture</p>
+						<p>Property is a grouping of features that can help explain decision</p> 
+						<p>Input from left</p>
+						<p>First phase is where combination property transforms of the features occurs</p>
+						<p>along with Machine learning analysis to make local decisions</p>
+						<p>Decision making process considers local decisions and suggests a global answer</p>
+						<p>XAI block considers property decisions and provides justification in terms of properties contributing to the decision</p>
+						<p>Knowledgebase is used to gauge effectiveness of properties.</p>
+						<p>A particular implementation fof the architecture for 5 properties is depicted.  Note 31 properties.</p>
 					</aside>
 				</section>
 
@@ -253,7 +282,13 @@
 
 						
 						<aside class="notes">
-							<p></p>
+							<p>Property based explainable example from the test set is depicted in this slide</p>
+							<p>The particular values for the 5 features are depicted at the top</p>
+							<p>The sample is a trojan shown in the last column and value of 1</p>
+							<p>Output of the system is depicted in the bottom.</p>
+							<p>A trojan was predicted with 99.6% confidence</p>
+							<p>The properties contributing to the decision are listed in descending order of weight</p>
+							<p>Exlainability is low at 41%  We will se why from the next slide.  Note that all properties are fairly high</p>
 						</aside>
 					</section>
 
@@ -265,7 +300,11 @@
 
 						
 						<aside class="notes">
-							<p></p>
+							<p>This table shows the 31 properties in the system and associated features</p>
+							<p>Identifier in the first column, features in second explainability in third</p>
+							<p>We argue that a property with few features is highly explainable and therefore has a high explability value</p>
+							<p>While many or all features have very low explainability</p>
+							<p>The explainability of 41% from the last slide is a result of combining properties with high feature counts and low explainability in the decision</p>
 						</aside>
 					</section>
 
@@ -276,7 +315,10 @@
 					<h4>Case-Based Explainable Architecture</h4>
 					<img src="./images/case-based-xai-arch.svg" background="white" height="300">
 					<aside class="notes">
-						<p></p>
+						<p>This diagram depicts the case based architecture</p>
+						<p>Consists of a training index that assists in rapid retrieval of similar cases from the training set</p>
+						<p>and an inference engine implemented as a Support Vector Machine</p>
+						<p>The explanation block composes case based information by relating neighboring cases from training.</p>
 					</aside>
 				</section>
 
@@ -295,7 +337,14 @@
 
 					
 					<aside class="notes">
-						<p></p>
+						<p>This slide depicts the same test sample we saw earlier.</p>
+						<p>The inference engine recognized as a trojan.</p>
+						<p>The output of the case based system is below</p>
+						<p>Four neighboring groups were extracted and are listed by proximity, euclidean distance</p>
+						<p>Distance is the first column, feature values of the group is next, ratio of trojan "t" to non-trojan "n" is shown</p>
+						<p>The next two columns are trojan weight and non-trojan weight</p>
+						<p>A balancing factor is used to overcome the data imbalance</p>
+						<p>In addition to this information, the particular cases from training can be presented with their original context.</p>
 					</aside>
 				</section>
 
