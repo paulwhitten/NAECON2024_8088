@@ -68,7 +68,7 @@
 					
 					<div class="medium"><a href=mailto:pcw@case.edu>Paul Whitten</a>, <a href=mailto:fxw12@case.edu>Francis Wolff</a>, and <a href=mailto:cap2@case.edu>Chris Papachristou</a></div>
 					
-					<p class="medium">2024-07-17</p>
+					<p class="medium"><a href="https://paulwhitten.github.io/NAECON2024_8088/">2024-07-17</a></p>
 
 				</section>
 
@@ -262,7 +262,7 @@
 						<p>Decision making process considers local decisions and suggests a global answer</p>
 						<p>XAI block considers property decisions and provides justification in terms of properties contributing to the decision</p>
 						<p>Knowledgebase is used to gauge effectiveness of properties.</p>
-						<p>A particular implementation fof the architecture for 5 properties is depicted.  Note 31 properties.</p>
+						<p>A particular implementation of the architecture for 5 properties is depicted.  Note 31 properties.</p>
 					</aside>
 				</section>
 
@@ -288,7 +288,7 @@
 							<p>Output of the system is depicted in the bottom.</p>
 							<p>A trojan was predicted with 99.6% confidence</p>
 							<p>The properties contributing to the decision are listed in descending order of weight</p>
-							<p>Exlainability is low at 41%  We will se why from the next slide.  Note that all properties are fairly high</p>
+							<p>Exlainability is low at 41%  We will see why from the next slide.  Note that all properties are fairly high</p>
 						</aside>
 					</section>
 
@@ -296,7 +296,7 @@
 						<h4>Properties</h4>
 						
 						
-						<img src="./images/properties.png">
+						<img src="./images/properties.png" height="500">
 
 						
 						<aside class="notes">
@@ -318,6 +318,7 @@
 						<p>This diagram depicts the case based architecture</p>
 						<p>Consists of a training index that assists in rapid retrieval of similar cases from the training set</p>
 						<p>and an inference engine implemented as a Support Vector Machine</p>
+						<p>Note that the inference and training index are fairly isolated.  They operate in parallel with relation</p>
 						<p>The explanation block composes case based information by relating neighboring cases from training.</p>
 					</aside>
 				</section>
@@ -383,6 +384,8 @@
 			// - https://revealjs.com/initialization/
 			// - https://revealjs.com/config/
 			Reveal.initialize({
+				//width: 1280,
+				//height: 720,
 				hash: true,
 
 				// Learn about plugins: https://revealjs.com/plugins/
